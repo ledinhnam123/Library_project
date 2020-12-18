@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Chi tiết sản phẩm </title>
+    </h:head>
+    <h:body>
+        <ui:composition template="templates/base.xhtml">
+
+            <ui:define name ="content">
+                <div class="container">
+                    <h1 class="text-center" >#{pMsg['books.admin']}</h1>
+                    <h:form enctype="multipart/form-data">
+                        <div class="form-group">
+                            <h:outputLabel value="#{pMsg['books.name']}"/>
+                            <h:inputText id="txtName" value="#{bookBean.name}" styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">                          
+                            <h:outputLabel value="#{pMsg['books.category']}"/>
+                            <h:selectOneMenu id="category" value="#{bookBean.category}" 
+                                             styleClass="form-control"
+                                             converter="CategoryConverter" >
+                                <f:selectItems var="cat" value="#{categoryBean.categories}" 
+                                               itemLabel="#{cat.categoryName}"
+                                               itemValue="#{cat}"/>
+                            </h:selectOneMenu>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{pMsg['books.description']}"/>
+                            <h:inputText id="txtDescription" value="#{bookBean.description}"  styleClass="form-control"/>
+                        </div>
+                        <div class="form-group">
+                            <h:outputLabel value="#{pMsg['books.image']}"/>
+                            <h:inputFile styleClass="form-control" 
+                                         id="fileImage"
+                                         value="#{bookBean.imgFile}"
+                                         validator="UploadValidator"/>
+                            <h:message for="fileImage"/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <h:commandButton value="Add Book" 
+                                             action="#{bookBean.addBook()}"
+                                             styleClass="btn-warning" />
+                        </div>
+                    </h:form>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
