@@ -1,0 +1,12 @@
+com\ledinhnam\Entity\CategoryEntity.class
+com\ledinhnam\Service\HibernateUtil.class
+com\ledinhnam\Service\BookService.class
+com\ledinhnam\bean\CategoryBean.class
+com\ledinhnam\Entity\BorrowTicketsEntity.class
+com\ledinhnam\Entity\CustomersEntity.class
+com\ledinhnam\Entity\TicketEntity.class
+com\ledinhnam\Entity\BorrowTicketDetailsEntity.class
+com\ledinhnam\Entity\EmployeesEntity.class
+com\ledinhnam\Entity\InventoryEntity.class
+com\ledinhnam\validator\UploadValidator.class
+com\ledinhnam\Entity\BookEntity.class
