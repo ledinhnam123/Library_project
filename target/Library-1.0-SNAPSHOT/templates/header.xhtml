@@ -13,34 +13,35 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <span class="nav-link active" aria-current="page" href="#">TRANG CHỦ</span>
+                            <a class="nav-link active" aria-current="page" href="http://localhost:8080/Library/">TRANG CHỦ</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">SÁCH</a>
+                            <a class="nav-link active" href="http://localhost:8080/Library/faces/books.xhtml">SÁCH</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" tabindex="-1" aria-disabled="false">TIN TỨC</a>
+                            <a class="nav-link active" href="#" tabindex="-1" aria-disabled="false">THỂ LOẠI SÁCH</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">XEM THÊM</a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <li><a class="dropdown-item" href="#">Tác Giả</a></li>
-                                <li><a class="dropdown-item" href="#">Thể loại sách</a></li>
                                 <li><hr class="dropdown-divider"/></li>
-                                <li><a class="dropdown-item" href="#">Notes</a></li>
+                                <li><a class="dropdown-item" href="#">Tác Phẩm</a></li>
+                                <li><hr class="dropdown-divider"/></li>
+                                <li><a class="dropdown-item" href="#">Chú Ý</a></li>
                             </ul>
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <button class="btn btn-outline-success" type="submit">Đăng nhập</button>
-                        <button class="btn btn-outline-success" type="submit">Đăng kí</button>
+                        <button class="btn btn-outline-success" type="submit">
+                            <h:graphicImage name="login.png" library="images" width="25%" height="80%"/>Đăng nhập
+                        </button>
+                        <button class="btn btn-outline-success" type="submit">
+                            <h:graphicImage name="register.png" library="images" width="25%" height="70%"/>Đăng ký
+                        </button>
                     </form>
                 </div>
             </div>
         </nav>
-        <form class="d-flex">
-            <input class="search" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button></input>
-        </form>
     </body>
 </ui:composition>

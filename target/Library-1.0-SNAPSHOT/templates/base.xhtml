@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"   
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core" >
+      xmlns:f="http://xmlns.jcp.org/jsf/core" 
+      xmlns:ct="http://www.chartistjsf.org/charts">
     <h:head>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
@@ -13,6 +14,7 @@
         <h:outputStylesheet name="backtotop.css" library="css"/>
         <h:outputScript name="backtotop.js" library="js" />
         <f:loadBundle var="pMsg" basename="books"></f:loadBundle>  
+        
         <style>
             .footer111{
                 bottom:0;
@@ -22,6 +24,7 @@
                 text-align: center;
                 margin-bottom: 0;
                 padding-bottom: 0;
+                font-size: 12px;
             }
             .search{
                 width:70%;
@@ -30,18 +33,45 @@
             .d-flex{
                 float:right;
             }
-        </style>
-    </h:head>
-    <h:body>   
-        <ui:insert name="header">
-            <ui:include src="header.xhtml"/>
-        </ui:insert>
-        <ui:insert name="content">
-            <ui:include src="content.xhtml"/>
-        </ui:insert>
-        <ui:insert name="footer">
-            <ui:include src="footer.xhtml"/>
-        </ui:insert>
-    </h:body>
-</html>
+            table {
+                width:100%;
+            }
+            .btn-outline-success{
+                width: 130px;
+            }
+            .navbar-expand-lg .navbar-nav{
+                font-size: 20px;
+            }
+            .btn-warning {
+                width: 150px;
+                height: 40px;
+                font-size: 20px;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                font-weight: bold;
+            }
+            .form-group{
+                margin-top: 15px;
+            }
+            .chart01{
+                font-size: 30px;
+                color: blue;
+            }
+            </style>
+        </h:head>
+        <h:body>   
+            <ui:insert name="header">
+                <ui:include src="header.xhtml"/>
+            </ui:insert>
+            <ui:insert name="menu">
+                <ui:include src="menu.xhtml"/>
+            </ui:insert>
+            <ui:insert name="content">
+                <ui:include src="content.xhtml"/>
+            </ui:insert>
+            <ui:insert name="footer">
+                <ui:include src="footer.xhtml"/>
+            </ui:insert>
+        </h:body>
+    </html>
 

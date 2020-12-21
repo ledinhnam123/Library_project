@@ -24,8 +24,8 @@ public class UploadValidator implements Validator {
     public void validate(FacesContext context, UIComponent component, Object value) throws ValidatorException {
         Part p = (Part) value;
 // Ảnh phải là png hoặc jpg
-        if (!p.getContentType().equals("image/png")
-                && !p.getContentType().equals("image/jpg")) {
+        if (!p.getContentType().equals("upload/.png")
+                && !p.getContentType().equals("upload/.jpg")) {
             FacesMessage msg = new FacesMessage("Need png/jpg");
             throw new ValidatorException(msg);
         }
