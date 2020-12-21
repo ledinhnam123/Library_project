@@ -28,7 +28,7 @@ import javax.servlet.http.Part;
 @Named(value = "bookBean")
 @RequestScoped
 public class BookBean {
-    private int bookId;
+ 
     private String name;
     private String description;
     private CategoryEntity category;
@@ -45,7 +45,7 @@ public class BookBean {
                     .getRequestParameterMap().get("book_id");
             if (bookId != null && !bookId.isEmpty()) {
                 BookEntity book = bookService.getBookById(Integer.parseInt(bookId));
-                this.bookId = book.getId();
+               
                 this.description = book.getDescription();
                 this.name = book.getBookName();
                 this.category = book.getCetegory(); // lấy l
@@ -66,11 +66,9 @@ public class BookBean {
 //                .getExternalContext()
 //                .getRequestParameterMap().get("book_id");
         BookEntity book;
-        if ( this.bookId != null) {
-            book = bookService.getBookById(Integer.parseInt(bookId)); // persitences
-        } else {
+     
             book = new BookEntity(); // transient
-        }
+        
        
         book.setBookName(this.name);
         book.setDescription(this.description);
@@ -164,12 +162,5 @@ public class BookBean {
         BookBean.bookService = bookService;
     }
 
-    public int getBookId() {
-        return bookId;
-    }
-
-    public void setBookId(int bookId) {
-        this.bookId = bookId;
-    }
 
 }

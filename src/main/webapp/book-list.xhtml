@@ -15,9 +15,7 @@
                     
                     <h1 class="text-center" >#{pMsg['books.admin']}</h1>
                     <h:link styleClass="btn btn-warning" value ="#{pMsg['books.add']}" outcome="books?faces-redirect=true">
-                        
-                    </h:link>
-                    
+                    </h:link>           
                     <h:dataTable var="book" value="#{bookBean.books}" styleClass="table">
                         <h:column>
                             <f:facet name="header">#{pMsg['books.id']}</f:facet>
@@ -50,8 +48,6 @@
                             </h:form>
                             
                         </h:column>
-
-
                     </h:dataTable>
                 </div>
                 <script >
