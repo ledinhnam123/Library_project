@@ -1,10 +1,15 @@
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\bean\CategoryBean.java
+E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\bean\CustomerBean.java
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Entity\BorrowTicketDetailsEntity.java
+E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Service\CustomerService.java
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Service\Test.java
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Service\BookService.java
+E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Service\EmployeeService.java
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Entity\TicketEntity.java
+E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\bean\EmployeeBean.java
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Entity\BookEntity.java
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Entity\BorrowTicketsEntity.java
+E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\bean\CartBean.java
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\validator\UploadValidator.java
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Service\CategoryService.java
 E:\JSFPROJECT\Library\src\main\java\com\ledinhnam\Entity\EmployeesEntity.java

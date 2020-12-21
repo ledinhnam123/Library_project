@@ -1,0 +1,52 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template = "templates/base.xhtml">             
+        <ui:define name ="content">
+            <h1 class="text-center"> Register </h1>
+            <h:message />
+            <h:form>                 
+                <div class="container">
+                    <div class="form-group">
+                        <h:outputText value="Họ tên"/>
+                        <h:inputText id = "txtName" styleClass="form-control"
+                                     value="#{employeeBean.name}" />
+                    </div>
+                    <div class="form-group">
+                        <h:outputText value="Email"/>
+                        <h:inputText id = "txtEmail" styleClass="form-control"
+                                     value="#{employeeBean.email}"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputText value="Số điện thoại"/>
+                        <h:inputText id = "txtSdt" styleClass="form-control"
+                                     value="#{employeeBean.phone}"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputText value="Mật khẩu"/>
+                        <h:inputText id = "txtPass" styleClass="form-control"
+                                     value="#{employeeBean.pass}"/>
+                    </div>
+                    <div class="form-group">
+                        <h:outputText value="Xác nhận mật khẩu"/>
+                        <h:inputText id = "txtConfirmPassword" 
+                                     value="#{employeeBean.confirmPasswork}"
+                                     styleClass="form-control"/>
+                    </div>
+                    <div class="form-group">
+                        <h:commandButton value="Đăng ký" 
+                                         action="#{employeeBean.register()}"
+                                         class="btn btn-warning">
+
+                        </h:commandButton>
+                    </div>
+                </div>
+            </h:form> 
+        </ui:define>
+
+    </ui:composition>
+</html>
+
+

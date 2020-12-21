@@ -9,7 +9,6 @@ package com.ledinhnam.Entity;
  *
  * @author Hp
  */
-
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Set;
@@ -24,131 +23,123 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 @Entity
 @Table(name = "borrow_ticket_details")
 public class BorrowTicketsEntity implements Serializable {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@Column(name = "quantity")
-	private int quantity;
-	@Column(name = "borrow_date")
-	private Date boorrowDate;
-	@Column(name = "appointment_date")
-	private Date appointmentDate;
-	@Column(name = "return_date")
-	private Date returnDate;
-	@Column(name = "status")
-	private Boolean status;
-	@Column(name = "note")
-	private String node;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "quantity")
+    private int quantity;
+    @Column(name = "borrow_date")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date boorrowDate;
+    @Column(name = "appointment_date")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date appointmentDate;
+    @Column(name = "return_date")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date returnDate;
+    @Column(name = "status")
+    private Boolean status;
+    @Column(name = "note")
+    private String node;
 
-	@ManyToOne
-	@JoinColumn(name = "employee_id")
-	private EmployeesEntity employee;
-	@ManyToOne
-	@JoinColumn(name = "customer_id")
-	private CustomersEntity customer;
+    @ManyToOne
+    @JoinColumn(name = "employee_id")
+    private EmployeesEntity employee;
+    @ManyToOne
+    @JoinColumn(name = "customer_id")
+    private CustomersEntity customer;
 
-	@OneToMany(mappedBy = "borrowTicketD", fetch = FetchType.LAZY)
-	private Set<BorrowTicketDetailsEntity> borrowTicketDetail;
+    @OneToMany(mappedBy = "borrowTicketD", fetch = FetchType.LAZY)
+    private Set<BorrowTicketDetailsEntity> borrowTicketDetail;
 
-	@OneToMany(mappedBy = "borrowTicket", fetch = FetchType.LAZY)
-	private Set<TicketEntity> tickets;
+    public Set<BorrowTicketDetailsEntity> getBorrowTicketDetail() {
+        return borrowTicketDetail;
+    }
 
-	public Set<TicketEntity> getTickets() {
-		return tickets;
-	}
+    public void setBorrowTicketDetail(Set<BorrowTicketDetailsEntity> borrowTicketDetail) {
+        this.borrowTicketDetail = borrowTicketDetail;
+    }
 
-	public void setTickets(Set<TicketEntity> tickets) {
-		this.tickets = tickets;
-	}
+    public CustomersEntity getCustomer() {
+        return customer;
+    }
 
-	public Set<BorrowTicketDetailsEntity> getBorrowTicketDetail() {
-		return borrowTicketDetail;
-	}
+    public void setCustomer(CustomersEntity customer) {
+        this.customer = customer;
+    }
 
-	public void setBorrowTicketDetail(Set<BorrowTicketDetailsEntity> borrowTicketDetail) {
-		this.borrowTicketDetail = borrowTicketDetail;
-	}
+    public BorrowTicketsEntity() {
 
-	public CustomersEntity getCustomer() {
-		return customer;
-	}
+    }
 
-	public void setCustomer(CustomersEntity customer) {
-		this.customer = customer;
-	}
+    public EmployeesEntity getEmployee() {
+        return employee;
+    }
 
-	public BorrowTicketsEntity() {
+    public void setEmployee(EmployeesEntity employee) {
+        this.employee = employee;
+    }
 
-	}
+    public int getId() {
+        return id;
+    }
 
-	public EmployeesEntity getEmployee() {
-		return employee;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setEmployee(EmployeesEntity employee) {
-		this.employee = employee;
-	}
+    public int getQuantity() {
+        return quantity;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public Date getBoorrowDate() {
+        return boorrowDate;
+    }
 
-	public int getQuantity() {
-		return quantity;
-	}
+    public void setBoorrowDate(Date boorrowDate) {
+        this.boorrowDate = boorrowDate;
+    }
 
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
-	}
+    public Date getAppointmentDate() {
+        return appointmentDate;
+    }
 
-	public Date getBoorrowDate() {
-		return boorrowDate;
-	}
+    public void setAppointmentDate(Date appointmentDate) {
+        this.appointmentDate = appointmentDate;
+    }
 
-	public void setBoorrowDate(Date boorrowDate) {
-		this.boorrowDate = boorrowDate;
-	}
+    public Date getReturnDate() {
+        return returnDate;
+    }
 
-	public Date getAppointmentDate() {
-		return appointmentDate;
-	}
+    public void setReturnDate(Date returnDate) {
+        this.returnDate = returnDate;
+    }
 
-	public void setAppointmentDate(Date appointmentDate) {
-		this.appointmentDate = appointmentDate;
-	}
+    public Boolean getStatus() {
+        return status;
+    }
 
-	public Date getReturnDate() {
-		return returnDate;
-	}
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
 
-	public void setReturnDate(Date returnDate) {
-		this.returnDate = returnDate;
-	}
+    public String getNode() {
+        return node;
+    }
 
-	public Boolean getStatus() {
-		return status;
-	}
-
-	public void setStatus(Boolean status) {
-		this.status = status;
-	}
-
-	public String getNode() {
-		return node;
-	}
-
-	public void setNode(String node) {
-		this.node = node;
-	}
+    public void setNode(String node) {
+        this.node = node;
+    }
 
 }
-

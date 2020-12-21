@@ -70,7 +70,7 @@ public class BookBean {
         if(this.bookId > 0)
             book=bookService.getBookById(this.bookId);//link tới
         else
-            book = new BookEntity();//stransient
+            book = new BookEntity();//stran\sient
         book.setBookName(name);
         book.setDescription(this.description);
         book.setCetegory(this.category);

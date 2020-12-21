@@ -26,21 +26,20 @@ public class CustomersEntity implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name = "identity_id")
-	private String identity_id;
-	@Column(name = "last_name")
-	private String lastName;
-	@Column(name = "firs_name")
-	private String firstName;
+
+	@Column(name = "name")
+	private String name;
 	@Column(name = "email")
 	private String email;
 	private String phone;
-	@Column(name = "is_active")
+	@Column(name = "isActive")
 	private Boolean isActive;
 	
 	@OneToMany(mappedBy = "customer",fetch = FetchType.LAZY)
 	private Set<BorrowTicketsEntity> borrowTickets;
 
+           @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY)
+           private Set<TicketEntity> tickets;
 	public CustomersEntity() {
 
 	}
@@ -51,31 +50,7 @@ public class CustomersEntity implements Serializable {
 
 	public void setId(int id) {
 		this.id = id;
-	}
-
-	public String getIdentity_id() {
-		return identity_id;
-	}
-
-	public void setIdentity_id(String identity_id) {
-		this.identity_id = identity_id;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+	}	
 
 	public String getEmail() {
 		return email;
@@ -100,6 +75,52 @@ public class CustomersEntity implements Serializable {
 	public void setIsActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
+
+     public boolean addOrSaveBook(CustomersEntity customer) {
+         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+     }
+
+    /**
+     * @return the borrowTickets
+     */
+    public Set<BorrowTicketsEntity> getBorrowTickets() {
+        return borrowTickets;
+    }
+
+    /**
+     * @param borrowTickets the borrowTickets to set
+     */
+    public void setBorrowTickets(Set<BorrowTicketsEntity> borrowTickets) {
+        this.borrowTickets = borrowTickets;
+    }
+
+    /**
+     * @return the tickets
+     */
+    public Set<TicketEntity> getTickets() {
+        return tickets;
+    }
+
+    /**
+     * @param tickets the tickets to set
+     */
+    public void setTickets(Set<TicketEntity> tickets) {
+        this.tickets = tickets;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
 }
 

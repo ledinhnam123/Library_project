@@ -23,92 +23,100 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "employees")
 public class EmployeesEntity implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@Column(name = "identity_id")
-	private String identityId;
-	@Column(name = "last_name")
-	private String lastName;
-	@Column(name = "firs_name")
-	private String firstName;
-	@Column(name = "phone")
-	private String phone;
-	@Column(name = "email")
-	private String email;
-	@Column(name = "is_active")
-	private Boolean isActive;
-	
-	@OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-	private Set<BorrowTicketsEntity> borrowTickets;
 
-	public Set<BorrowTicketsEntity> getBorrowTickets() {
-		return borrowTickets;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "identity_id")
+    private String identityId;
+    @Column(name = "phone")
+    private String phone;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "pass")
+    private String pass;
+    @Column(name="name")
+    private String name;
 
-	public void setBorrowTickets(Set<BorrowTicketsEntity> borrowTickets) {
-		this.borrowTickets = borrowTickets;
-	}
+    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
+    private Set<BorrowTicketsEntity> borrowTickets;
 
-	public EmployeesEntity() {
+    public Set<BorrowTicketsEntity> getBorrowTickets() {
+        return borrowTickets;
+    }
 
-	}
+    public void setBorrowTickets(Set<BorrowTicketsEntity> borrowTickets) {
+        this.borrowTickets = borrowTickets;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public EmployeesEntity() {
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    }
 
-	public String getIdentityId() {
-		return identityId;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setIdentityId(String identityId) {
-		this.identityId = identityId;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getLastName() {
-		return lastName;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    /**
+     * @return the pass
+     */
+    public String getPass() {
+        return pass;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    /**
+     * @param pass the pass to set
+     */
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Boolean getIsActive() {
-		return isActive;
-	}
+    /**
+     * @return the identityId
+     */
+    public String getIdentityId() {
+        return identityId;
+    }
 
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
+    /**
+     * @param identityId the identityId to set
+     */
+    public void setIdentityId(String identityId) {
+        this.identityId = identityId;
+    }
 
 }
-

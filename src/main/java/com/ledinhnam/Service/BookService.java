@@ -77,7 +77,7 @@ public class BookService {
 
             } catch (Exception ex) {
                 session.getTransaction().rollback();
-                return false;
+                return false;   
             }
         }
         return true;

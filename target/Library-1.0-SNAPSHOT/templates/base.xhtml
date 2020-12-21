@@ -14,10 +14,12 @@
             <f:loadBundle var="pMsg" basename="books"></f:loadBundle>
     </h:head>
     <h:body>
-        
+        <ui:insert name="menu">
+            <ui:include src="menu.xhtml"/>
+        </ui:insert>       
         <ui:insert name = "header">
             <ui:include src="header.xhtml"/>
-
+            
         </ui:insert>
         <ui:insert name = "content">
             <ui:include src="content.xhtml"/>

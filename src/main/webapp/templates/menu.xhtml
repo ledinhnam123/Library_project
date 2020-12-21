@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"   
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"  
+          
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <header>
+        <ui:composition>
+            <h1>Phần Menu</h1>
+         
+            <div class="btn-group navbar-right">               
+                <c:if test="#{facesContext.externalContext.sessionMap.get('employee')!= null}">
+                    <h:form>                
+                    <button class="btn btn-info navbar-btn ">
+                        <span class="glyphicon glyphicon-user">#{facesContext.externalContext.sessionMap.get('employee').name} </span>                        
+                    </button>
+                        <h:commandButton styleClass="btn btn-info navbar-btn" action="#{employeeBean.logout()}" value="Đăng xuất">    
+                            <span class="glyphicon glyphicon-user"> Đăng xuất</span>
+                        </h:commandButton>                  
+                    </h:form>
+                </c:if>               
+                <c:if test="#{facesContext.externalContext.sessionMap.get('employee') == null}">
+                    <button class="btn btn-info navbar-btn" data-toggele="modal" data-target="#registerModalId" >
+                        <span class="glyphicon glyphicon-check"> Đăng nhập</span>
+                    </button>
+                    <button class="btn btn-info navbar-btn" data-toggele="modal" data-target="#registerModalId" >
+                        <span class="glyphicon glyphicon-check"> Đăng Ký</span>
+                    </button>
+
+
+                </c:if>
+            </div>
+
+        </ui:composition>
+    </header>
+</html>
+

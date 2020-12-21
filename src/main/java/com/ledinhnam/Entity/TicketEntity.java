@@ -15,6 +15,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -27,21 +28,24 @@ public class TicketEntity implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	@Column(name="create_at")
+        @Temporal(javax.persistence.TemporalType.DATE)
 	private Date createAt;
 	@Column(name="fine_money")
-	private double fineMoney;
-	
+	private double fineMoney;	
 	@ManyToOne
-	@JoinColumn(name="borrow_ticket_id")
-	private BorrowTicketsEntity borrowTicket;
+	@JoinColumn(name="customer_id")
+	private CustomersEntity customer;
+
+    public CustomersEntity getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(CustomersEntity customer) {
+        this.customer = customer;
+    }
 	
 	
-	public BorrowTicketsEntity getBorrowTicket() {
-		return borrowTicket;
-	}
-	public void setBorrowTicket(BorrowTicketsEntity borrowTicket) {
-		this.borrowTicket = borrowTicket;
-	}
+	
 	public TicketEntity() {
 		
 	}
