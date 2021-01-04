@@ -5,20 +5,34 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 
-    <ui:composition template="resources/base.xhtml" >
+    <ui:composition template="templates/base.xhtml" >
         <ui:define name="header">
-            
+
         </ui:define>
         <ui:define name="content">
             <h1>#{pMsg['books.detail']}</h1>
-            <div class="container">
-                <h:dataTable>
+            <div class="container" >
+                <h:dataTable var="cart" value="#{cartBean.carts}" styleClass="table">
                     <h:column>
-                        <f:facet name="header">#{pMsg[''} </f:facet>
-                            
-                       
+                        <f:facet name="header">#{pMsg['books.id']}</f:facet>
+                            #{cart['bookId']}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{pMsg['books.name']}</f:facet>
+                            #{cart['bookName']}
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">#{pMsg['books.count']}</f:facet>
+                            #{cart['count']}
                     </h:column>
                 </h:dataTable>
+
+                <h:form>
+                    <h:commandButton value="Hoàn thành"
+                                     action="#{borrowBookBean.add()}"
+                                     styleClass="btn btn-warning">                       
+                    </h:commandButton>
+                </h:form> 
             </div>
         </ui:define>
     </ui:composition>

@@ -10,15 +10,31 @@
     </h:head>
     <h:body>
         <ui:composition template = "templates/base.xhtml">  
+
             <ui:define name = "content">
-                <div class="container">        
-                    
+
+
+                <div class="container" >        
+
                     <h1 class="text-center" >#{pMsg['books.admin']}</h1>
+
+
+                    <h:form class="d-flex">
+
+
+                        <input class="search" type="search" placeholder="Tìm kiếm" aria-label="Search">
+
+
+                            <button class="btn btn-outline-success" type="submit" >
+                                <h:graphicImage name="search.jpg" library="images" width="30%" height="80%"/>Search
+                            </button>
+                        </input>
+                    </h:form>
                     <h:link styleClass="btn btn-warning" value ="#{pMsg['books.add']}" outcome="books?faces-redirect=true">
-                        
+
                     </h:link>
-                    
                     <h:dataTable var="book" value="#{bookBean.books}" styleClass="table">
+
                         <h:column>
                             <f:facet name="header">#{pMsg['books.id']}</f:facet>
                                 #{book.id}
@@ -32,9 +48,9 @@
                                 #{book.description}
                         </h:column>
                         <h:column>
-                            
+
                             <f:facet name="header">#{pMsg['books.category']}</f:facet>
-                            #{book.cetegory.categoryName}
+                                #{book.cetegory.categoryName}
                         </h:column>
                         <h:column>
                             <f:facet name="header"></f:facet>
@@ -43,22 +59,22 @@
                                 <h:link  includeViewParams="true" value="#{pMsg['books.update']}" outcome="books?faces-redirect=true" >
                                     <f:param name="book_id" value="#{book.id}"/>
                                 </h:link>
-                                       |
+                                |
                                 <h:commandLink value="#{pMsg['books.delete']}">
                                     <f:ajax listener="#{bookBean.deleteBook(book)}" onevent="deleteSuccess" onerror="deleteError"/>
                                 </h:commandLink>
                             </h:form>
-                            
+
                         </h:column>
 
 
                     </h:dataTable>
                 </div>
                 <script >
-                    function deleteSuccess(){
+                    function deleteSuccess() {
                         alert("Xóa thành công !!");
                     }
-                    function deleteError(){
+                    function deleteError() {
                         alert("Xóa thất bại !!");
                     }
                 </script>

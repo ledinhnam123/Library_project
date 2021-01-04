@@ -6,15 +6,19 @@
 package com.ledinhnam.Entity;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
+import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+
 import javax.persistence.Table;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -23,75 +27,113 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "customers")
 public class CustomersEntity implements Serializable {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 
-	@Column(name = "name")
-	private String name;
-	@Column(name = "email")
-	private String email;
-	private String phone;
-	@Column(name = "isActive")
-	private Boolean isActive;
-	
-	@OneToMany(mappedBy = "customer",fetch = FetchType.LAZY)
-	private Set<BorrowTicketsEntity> borrowTickets;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "name")
+    private String name;
+    @Column(name = "email")
+    private String email;
+    private String phone;
+    @Column(name = "isActive")
+    private int isActive;
+    @Column(name = "delete_at")
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date deleteAt;
 
-           @OneToMany(mappedBy = "customer",fetch = FetchType.LAZY)
-           private Set<TicketEntity> tickets;
-	public CustomersEntity() {
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private Set<BorrowBookEntity> borrowBook;
 
-	}
+    @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    private Set<TicketEntity> tickets;
 
-	public int getId() {
-		return id;
-	}
+    public CustomersEntity() {
 
-	public void setId(int id) {
-		this.id = id;
-	}	
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getPhone() {
-		return phone;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setPhone(String phone) {
-		this.phone = phone;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public Boolean getIsActive() {
-		return isActive;
-	}
+    public String getPhone() {
+        return phone;
+    }
 
-	public void setIsActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
 
-     public boolean addOrSaveBook(CustomersEntity customer) {
-         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-     }
+    @Override
+    public String toString() {
+        return String.valueOf(this.getId());
+    }
 
-    /**
-     * @return the borrowTickets
-     */
-    public Set<BorrowTicketsEntity> getBorrowTickets() {
-        return borrowTickets;
+    @Override
+    public boolean equals(Object obj) {
+        CustomersEntity cut = (CustomersEntity) obj;
+        return this.getId() == cut.getId();
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + this.getId();
+        return hash;
     }
 
     /**
-     * @param borrowTickets the borrowTickets to set
+     * @return the name
      */
-    public void setBorrowTickets(Set<BorrowTicketsEntity> borrowTickets) {
-        this.borrowTickets = borrowTickets;
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    /**
+     * @return the isActive
+     */
+    public int getIsActive() {
+        return isActive;
+    }
+
+    /**
+     * @param isActive the isActive to set
+     */
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
+    }
+
+    /**
+     * @return the borrowBook
+     */
+    public Set<BorrowBookEntity> getBorrowBook() {
+        return borrowBook;
+    }
+
+    /**
+     * @param borrowBook the borrowBook to set
+     */
+    public void setBorrowBook(Set<BorrowBookEntity> borrowBook) {
+        this.borrowBook = borrowBook;
     }
 
     /**
@@ -109,18 +151,17 @@ public class CustomersEntity implements Serializable {
     }
 
     /**
-     * @return the name
+     * @return the deleteAt
      */
-    public String getName() {
-        return name;
+    public Date getDeleteAt() {
+        return deleteAt;
     }
 
     /**
-     * @param name the name to set
+     * @param deleteAt the deleteAt to set
      */
-    public void setName(String name) {
-        this.name = name;
+    public void setDeleteAt(Date deleteAt) {
+        this.deleteAt = deleteAt;
     }
 
 }
-

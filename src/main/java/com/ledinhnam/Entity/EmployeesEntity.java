@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -38,20 +38,28 @@ public class EmployeesEntity implements Serializable {
     @Column(name="name")
     private String name;
 
-    @OneToMany(mappedBy = "employee", fetch = FetchType.LAZY)
-    private Set<BorrowTicketsEntity> borrowTickets;
+    @OneToMany(mappedBy = "employee")
+    private Set<BorrowBookEntity> borrowTickets;
 
-    public Set<BorrowTicketsEntity> getBorrowTickets() {
+    public Set<BorrowBookEntity> getBorrowTickets() {
         return borrowTickets;
     }
 
-    public void setBorrowTickets(Set<BorrowTicketsEntity> borrowTickets) {
+    public void setBorrowTickets(Set<BorrowBookEntity> borrowTickets) {
         this.borrowTickets = borrowTickets;
     }
 
     public EmployeesEntity() {
 
     }
+    
+    public EmployeesEntity(int id) {
+           this.id = id;
+           this.identityId = "";
+           this.phone = "029378235";
+           this.email = "tinhpham@gmail.com";
+    }
+    
 
     public int getId() {
         return id;

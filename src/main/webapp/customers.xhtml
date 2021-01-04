@@ -36,6 +36,14 @@
                                              styleClass="btn-warning" />
                         </div>
                     </h:form>
+                    
+                    <h:form>
+            <h:commandButton value="Hoàn thành" 
+                             action="#{borrowBookBean.updateBorrowBook()}"
+                             class="btn btn-outline-success">
+
+            </h:commandButton>
+        </h:form>
                 </div>
             </ui:define>
         </ui:composition>

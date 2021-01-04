@@ -59,6 +59,12 @@ public class BookBean {
 
         return books;
     }
+    
+    //seacrch Book
+    public List<BookEntity> searchBook(String keyword){     
+        List<BookEntity> books = bookService.getBooks(keyword);
+        return books;
+    }
 
     //update and save Book
     public String addBook() {

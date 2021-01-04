@@ -1,10 +1,78 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" >
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand">
+                    <h:graphicImage name="logo.png" library="images" width="40%" height="40%"/> 
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="margin-right: 50px">
+                        <li class="nav-item">
+                            <!--                            <a class="nav-link active" aria-current="page" outcome="books?faces-redirect=true">TRANG CHỦ</a>-->
+                            <h:link styleClass="btn btn-warning" value ="TRANG CHỦ" outcome="index?faces-redirect=true"/>
+                        </li>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-  xmlns:ui="http://java.sun.com/jsf/facelets">
-   
-<body>
-  <ui:composition>
-    <h1>Phần Header</h1>
-  </ui:composition>
-</body>
-</html>
+
+                        <li class="nav-item">
+                            <h:link styleClass="btn btn-warning" value ="SÁCH" outcome="book-list?faces-redirect=true"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:link styleClass="btn btn-warning" value ="ĐỘC GIẢ" outcome="customer-list?faces-redirect=true"/>
+                        </li>
+
+                        <li class="nav-item">
+                            <h:link styleClass="btn btn-warning" value ="NHÂN VIÊN" outcome="employee-list?faces-redirect=true"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:link styleClass="btn btn-warning" value ="THỐNG KÊ" outcome="chart?faces-redirect=true"/>
+                        </li>
+                        <li class="nav-item">
+                            <h:link styleClass="btn btn-warning" value ="TRẢ SÁCH" outcome="book-back?faces-redirect=true"/>
+                        </li>
+
+
+                    </ul>
+
+                    <div class="btn-group navbar-right">               
+                        <c:if test="#{facesContext.externalContext.sessionMap.get('employee')!= null}">
+                            <h:form>                
+                                <button class="btn btn-info navbar-btn ">
+                                    <span class="glyphicon glyphicon-user">#{facesContext.externalContext.sessionMap.get('employee').name} </span>                        
+                                </button>
+                                <h:commandButton styleClass="btn btn-info navbar-btn" action="#{employeeBean.logout()}" value="Đăng xuất">    
+
+                                </h:commandButton>                  
+                            </h:form>
+                        </c:if>               
+                        <c:if test="#{facesContext.externalContext.sessionMap.get('employee') == null}">
+                            <button class="btn btn-info navbar-btn" data-toggele="modal" data-target="#registerModalId" >
+                                <h:link class="btn btn-info navbar-btn" value="Đăng nhập" outcome="login?faces-redirect=true"/>
+                            </button>
+                            <button class="btn btn-info navbar-btn" data-toggele="modal" data-target="#registerModalId" >
+                                <h:link class="btn btn-info navbar-btn" value="Đăng ký" outcome="register?faces-redirect=true"/>
+                            </button>
+
+
+                        </c:if>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </body>
+</ui:composition>
+
+<!--<form class="d-flex">
+                        <button class="btn btn-outline-success" type="submit">
+                            <h:graphicImage name="login.png" library="images" width="25%" height="80%"/>Đăng nhập
+                        </button>
+                        <button class="btn btn-outline-success" type="submit">
+                            <h:graphicImage name="register.png" library="images" width="25%" height="70%"/>Đăng ký
+                        </button>
+                    </form>-->

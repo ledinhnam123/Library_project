@@ -1,0 +1,71 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      >
+    <h:head>
+        <title>Trang Sách Thư Viện</title>
+    </h:head>
+    <h:body>
+        <ui:composition template = "templates/base.xhtml">  
+
+            <ui:define name = "content">
+
+
+                <div class="container" >        
+
+                    <h1 class="text-center" >Quản lý thẻ</h1>
+
+                    <h:link styleClass="btn btn-warning" value ="Thêm thẻ" outcome="tickets?faces-redirect=true">
+
+                    </h:link>
+                    <h:dataTable var="ticket" value="#{ticketBean.ticks}" styleClass="table">
+
+                        <h:column>
+                            <f:facet name="header">#{pMsg['tickets.id']}</f:facet>
+                                #{ticket.id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">#{pMsg['tickets.createDate']}</f:facet>
+                                #{ticket.createAt}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">#{pMsg['tickets.expiredDate']}</f:facet>
+                                #{ticket.expiredDate}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">#{pMsg['tickets.customerId']}</f:facet>
+                                #{ticket.customer.id}
+                        </h:column>
+
+                        <h:column>
+                            <f:facet name="header"></f:facet>
+
+                            <h:form>
+                                <h:link  includeViewParams="true" value="#{pMsg['books.update']}" outcome="tickets?faces-redirect=true" >
+                                    <f:param name="ticket_id" value="#{ticket.id}"/>
+                                </h:link>
+                                |
+                                <h:commandLink value="#{pMsg['tickets.delete']}">
+                                    <f:ajax listener="#{ticketBean.deleteTicket(ticket)}" onevent="deleteSuccess" onerror="deleteError"/>
+                                </h:commandLink>
+                            </h:form>
+
+                        </h:column>
+                    </h:dataTable>
+                </div>
+                <script >
+                    function deleteSuccess() {
+                        alert("Xóa thành công !!");
+                    }
+                    function deleteError() {
+                        alert("Xóa thất bại !!");
+                    }
+                </script>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+

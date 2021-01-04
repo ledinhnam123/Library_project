@@ -8,37 +8,38 @@
     <h:head>
         <title>Facelet Title</title>
     </h:head>
-     <h:body>
+    <h:body>
         <ui:composition template = "templates/base.xhtml">  
             <ui:define name = "content">
                 <div class="container">        
-                    
+
                     <h1 class="text-center" >#{pMsg['customers.admin']}</h1>
                     <h:link styleClass="btn btn-warning" value ="#{pMsg['customers.add']}" outcome="customers?faces-redirect=true">
-                        
+
                     </h:link>
-                    
+
                     <h:dataTable var="customer" value="#{customerBean.customers}" styleClass="table">
                         <h:column>
                             <f:facet name="header">#{pMsg['customers.id']}</f:facet>
-                            #{customer.id}
+                                #{customer.id}
                         </h:column>
                         <h:column>
                             <f:facet name="header">#{pMsg['customers.name']}</f:facet>
-                            #{customer.name}
+                                #{customer.name}
                         </h:column>
-                     
-                        <h:column>                           
+                        <h:column>
                             <f:facet name="header">#{pMsg['customers.email']}</f:facet>
-                            #{customer.email}
+                                #{customer.email}
                         </h:column>
-                          <h:column>                           
+                        <h:column>
+
                             <f:facet name="header">#{pMsg['customers.phone']}</f:facet>
-                            #{customer.phone}
+                                #{customer.phone}
                         </h:column>
-                              <h:column>                           
+                        <h:column>
+
                             <f:facet name="header">#{pMsg['customers.active']}</f:facet>
-                            #{customer.isActive}
+                                #{customer.isActive}
                         </h:column>
                         <h:column>
                             <f:facet name="header"></f:facet>
@@ -47,22 +48,22 @@
                                 <h:link  includeViewParams="true" value="#{pMsg['customers.update']}" outcome="customers?faces-redirect=true" >
                                     <f:param name="customer_id" value="#{customer.id}"/>
                                 </h:link>
-                                       |
+                                |
                                 <h:commandLink value="#{pMsg['customers.delete']}">
                                     <f:ajax listener="#{customerBean.deleteCustomer(customer)}" onevent="deleteSuccess" onerror="deleteError"/>
                                 </h:commandLink>
                             </h:form>
-                            
+
                         </h:column>
 
 
                     </h:dataTable>
                 </div>
                 <script >
-                    function deleteSuccess(){
+                    function deleteSuccess() {
                         alert("Xóa thành công !!");
                     }
-                    function deleteError(){
+                    function deleteError() {
                         alert("Xóa thất bại !!");
                     }
                 </script>

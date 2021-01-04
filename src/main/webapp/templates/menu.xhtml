@@ -4,36 +4,20 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"   
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"  
-          
+
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <header>
-        <ui:composition>
-            <h1>Phần Menu</h1>
-         
-            <div class="btn-group navbar-right">               
-                <c:if test="#{facesContext.externalContext.sessionMap.get('employee')!= null}">
-                    <h:form>                
-                    <button class="btn btn-info navbar-btn ">
-                        <span class="glyphicon glyphicon-user">#{facesContext.externalContext.sessionMap.get('employee').name} </span>                        
-                    </button>
-                        <h:commandButton styleClass="btn btn-info navbar-btn" action="#{employeeBean.logout()}" value="Đăng xuất">    
-                            <span class="glyphicon glyphicon-user"> Đăng xuất</span>
-                        </h:commandButton>                  
-                    </h:form>
-                </c:if>               
-                <c:if test="#{facesContext.externalContext.sessionMap.get('employee') == null}">
-                    <button class="btn btn-info navbar-btn" data-toggele="modal" data-target="#registerModalId" >
-                        <span class="glyphicon glyphicon-check"> Đăng nhập</span>
-                    </button>
-                    <button class="btn btn-info navbar-btn" data-toggele="modal" data-target="#registerModalId" >
-                        <span class="glyphicon glyphicon-check"> Đăng Ký</span>
-                    </button>
-
-
-                </c:if>
-            </div>
+      <ui:composition>
+   
 
         </ui:composition>
     </header>
 </html>
 
+<!--<form class="d-flex">
+                <input class="search" type="search" placeholder="Tìm kiếm" aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" >
+                        <h:graphicImage name="search.jpg" library="images" width="30%" height="80%"/>Search
+                    </button>
+                </input>
+            </form>-->

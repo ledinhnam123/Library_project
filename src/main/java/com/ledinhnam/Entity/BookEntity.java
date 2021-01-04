@@ -41,7 +41,7 @@ public class BookEntity implements Serializable {
         private String image;
 	
 	@OneToMany(mappedBy = "book")
-	private Set<BorrowTicketDetailsEntity> borrowTicketDetails;
+	private Set<BorrowDetailsEntity> borrowTicketDetails;
 
 	@OneToMany(mappedBy = "bookI")
 	private Set<InventoryEntity> inventorys;
@@ -68,11 +68,11 @@ public class BookEntity implements Serializable {
 
 	
 
-	public Set<BorrowTicketDetailsEntity> getBorrowTicketDetails() {
+	public Set<BorrowDetailsEntity> getBorrowTicketDetails() {
 		return borrowTicketDetails;
 	}
 
-	public void setBorrowTicketDetails(Set<BorrowTicketDetailsEntity> borrowTicketDetails) {
+	public void setBorrowTicketDetails(Set<BorrowDetailsEntity> borrowTicketDetails) {
 		this.borrowTicketDetails = borrowTicketDetails;
 	}
 

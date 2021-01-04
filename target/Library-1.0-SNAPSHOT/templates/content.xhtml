@@ -1,34 +1,33 @@
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-
     <ui:composition>
-
-        <section class="container" id="sesstion2">
-            <c:forEach var="b" items="#{bookBean.books}">
-                <div class="col-md-4">
-                    <div class="row">
-                        <figure class="thumbnail text-center">
-                           
+        <div>
+            <br/><br/>           
+            <div class="container"> <h1 class="text-center" >DANH SÁCH MƯỢN</h1></div>
+            <h:form>
+                <h:link styleClass="btn btn-outline-success" value ="Nhập mã đọc giả" outcome="customer-info?faces-redirect=true"/>
+            </h:form>
+            <br/>
+            <section class="container" id="sesstion2" style="display: flex; flex-wrap: wrap;  ">
+                <div class="flex-container11">
+                    <c:forEach var="b" items="#{bookBean.books}">
+                        <figure style="padding: 0px 5px 0px 5px; border: 1px solid #cccccc; margin: 5px 5px 10px 5px;" class="thumbnail text-center">
                             <figcaption>
                                 <h5>#{b.bookName}</h5>
-                                <div>
-                                    <h:form>
-                                        <h:commandButton value="#{pMsg['books.cart']}" styleClass="btn btn-warning ">
-                                            <f:ajax />
-                                        </h:commandButton>
-                                    </h:form>
-                                </div> 
+                                <h:graphicImage name="#{b.image}" library="images" width="150px" height="150px"/>
+                                <h:form>
+                                    <h:commandButton value="#{pMsg['books.cart']}" styleClass="btn btn-warning ">
+                                        <f:ajax listener="#{cartBean.addItemToCart(b.id, b.bookName)}" />
+                                    </h:commandButton>
+                                </h:form>
                             </figcaption>
                         </figure>
-
-                    </div>
+                    </c:forEach>
                 </div>
-            </c:forEach>
-        </section>
+            </section>
+        </div>
     </ui:composition>
 </html>
-

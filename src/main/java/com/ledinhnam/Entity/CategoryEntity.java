@@ -22,27 +22,29 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "category_book")
-public class CategoryEntity implements Serializable{
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	@Column(name = "category_name")
-	private String categoryName;
-	@OneToMany(mappedBy = "cetegory",fetch = FetchType.LAZY)
-	private Set<BookEntity> books;
+public class CategoryEntity implements Serializable {
 
-	public CategoryEntity() {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "category_name")
+    private String categoryName;
+    @OneToMany(mappedBy = "cetegory", fetch = FetchType.LAZY)
+    private Set<BookEntity> books;
 
-	}
-       
+    public CategoryEntity() {
+
+    }
+
     @Override
-    public String toString(){
+    public String toString() {
         return String.valueOf(this.id);
     }
+
     @Override
-    public boolean equals(Object obj){
-        CategoryEntity cat = (CategoryEntity)obj;
-        return this.id ==cat.id;
+    public boolean equals(Object obj) {
+        CategoryEntity cat = (CategoryEntity) obj;
+        return this.id == cat.id; 
     }
 
     @Override
@@ -52,29 +54,28 @@ public class CategoryEntity implements Serializable{
         return hash;
     }
 
-	public Set<BookEntity> getBooks() {
-		return books;
-	}
+    public Set<BookEntity> getBooks() {
+        return books;
+    }
 
-	public void setBooks(Set<BookEntity> books) {
-		this.books = books;
-	}
+    public void setBooks(Set<BookEntity> books) {
+        this.books = books;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public String getCategoryName() {
-		return categoryName;
-	}
+    public String getCategoryName() {
+        return categoryName;
+    }
 
-	public void setCategoryName(String categoryName) {
-		this.categoryName = categoryName;
-	}
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
 
 }
-

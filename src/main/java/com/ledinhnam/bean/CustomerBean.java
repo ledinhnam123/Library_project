@@ -7,6 +7,8 @@ package com.ledinhnam.bean;
 
 import com.ledinhnam.Entity.CustomersEntity;
 import com.ledinhnam.Service.CustomerService;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,11 +25,12 @@ import javax.faces.context.FacesContext;
 @Named(value = "customerBean")
 @RequestScoped
 public class CustomerBean {
- 
+
     private int customerId;
     private String name;
     private String email;
     private String phone;
+    private int isActive;
     private static CustomerService customerService = new CustomerService();
 
     /**
@@ -40,49 +43,100 @@ public class CustomerBean {
                     .getRequestParameterMap().get("customer_id");
             if (cusId != null && !cusId.isEmpty()) {
                 CustomersEntity c = customerService.getCustomerById(Integer.parseInt(cusId));
-                this.customerId=c.getId(); // lấy l             
-                this.name=c.getName();
+                this.customerId = c.getId(); // lấy l             
+                this.name = c.getName();
                 this.email = c.getEmail();
                 this.phone = c.getPhone();
+                this.isActive = c.getIsActive();
+
             }
         }
-        
+
     }
-    public String addCustomer(){
+
+    public String addCustomer() {
         CustomersEntity customer;
-        if(this.customerId > 0)
-            customer=customerService.getCustomerById(this.customerId);//link tới
-        else
+        if (this.getCustomerId() > 0) {
+            customer = getCustomerService().getCustomerById(this.getCustomerId());//link tới
+        } else {
             customer = new CustomersEntity();//stran\sient
-        
-   
-        customer.setEmail(email);
-        customer.setPhone(phone);
+        }
+        customer.setIsActive(isActive);
+        customer.setName(getName());
+        customer.setEmail(getEmail());
+        customer.setPhone(getPhone());
         try {
-             if (true == customerService.addOrSaveCustomer(customer)) {
+            if (true == getCustomerService().addOrSaveCustomer(customer)) {
                 return "customer-list?faces-redirect=true"; // duong link giao dien 
             }
         } catch (Exception ex) {
-             Logger.getLogger(CustomerBean.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(CustomerBean.class.getName()).log(Level.SEVERE, null, ex);
         }
         return "customers";
     }
 
     public List<CustomersEntity> getCustomers() {
         List<CustomersEntity> customer = getCustomerService().getCustomers();
-        return customer;
+        List<CustomersEntity> customer2 = new ArrayList<>();
+        for (CustomersEntity cus : customer) {
+            CustomersEntity custo = new CustomersEntity();
+            if (cus.getDeleteAt() == null) {
+                custo.setId(cus.getId());
+                custo.setPhone(cus.getPhone());
+                custo.setName(cus.getName());
+                custo.setEmail(cus.getEmail());
+                custo.setIsActive(cus.getIsActive());
+                customer2.add(custo);
+
+            }
+        }
+        return customer2;
     }
+
     //xóa độc giả
-        public String deleteCustomer(CustomersEntity customer) throws Exception {
-        if (getCustomerService().deleteCustomer(customer)) {
+    public String deleteCustomer(CustomersEntity customer) throws Exception {
+        customer.setDeleteAt(new Date());
+        if (customerService.deleteCustomer(customer)) {
             return "Successful";
         }
 
         throw new Exception("Something Wrong!!");
     }
-    
-    
 
+    //update customer bookback
+    public String updateCusbookBack(CustomersEntity customer) throws Exception {
+        customer.setIsActive(1);
+        if (customerService.updateCus(customer)) {
+            return "Successs";
+        }
+        throw new Exception("Something Wrong!!");
+    }
+    //check login
+
+    public String checkCustomer() {
+        if (FacesContext.getCurrentInstance()
+                .getExternalContext()
+                .getSessionMap().get("customer") != null) {
+            return "payment?faces-redirect=true";
+        }
+
+        return null;
+    }
+    //Customer 
+
+    public String login() {
+        CustomersEntity cus = getCustomerService().check(getCustomerId());
+        if (cus != null) {
+            FacesContext.getCurrentInstance()
+                    .getExternalContext()
+                    .getSessionMap()
+                    .put("customer", cus);
+            return "payment?faces-redirect=true";
+        }
+        return "customer-info";
+    }
+
+    //xóa customer khỏi session
     /**
      * @return the customerService
      */
@@ -110,8 +164,6 @@ public class CustomerBean {
     public void setCustomerId(int customerId) {
         this.customerId = customerId;
     }
-
- 
 
     /**
      * @return the email
@@ -155,9 +207,18 @@ public class CustomerBean {
         this.name = name;
     }
 
- 
+    /**
+     * @return the isActive
+     */
+    public int getIsActive() {
+        return isActive;
+    }
 
-    
-    
+    /**
+     * @param isActive the isActive to set
+     */
+    public void setIsActive(int isActive) {
+        this.isActive = isActive;
+    }
 
 }
